@@ -18,12 +18,8 @@ app.use(cors());
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/messages", messageRoutes);
 
-app.get('/health', (req, res) => {
-  res.status(200).json({
-    status: 'healthy',
-    uptime: process.uptime(),
-    timestamp: Date.now()
-  });
+app.get("/health", (req, res) => {
+    res.status(200).json({ message: "Server is running" });
 });
 
 job.start();
