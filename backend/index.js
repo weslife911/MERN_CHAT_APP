@@ -5,12 +5,12 @@ const authRoutes = require("./routes/AuthRoutes");
 const messageRoutes = require("./routes/MessageRoutes");
 const cors = require("cors");
 const { app, server } = require("./utils/socket");
-const path = require("path");
+// const path = require("path");
 const job = require("./utils/cron");
 
 config();
 
-const dirname = path.resolve();
+// const dirname = path.resolve();
 
 app.use(express.json());
 app.use(cors());
@@ -28,13 +28,13 @@ app.get('/health', (req, res) => {
 
 job.start();
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(dirname, "../frontend/dist")));
+// if (process.env.NODE_ENV === "production") {
+//   app.use(express.static(path.join(dirname, "../frontend/dist")));
 
-  app.get("*", (req, res) => {
-    res.sendFile(path.join(dirname, "../frontend", "dist", "index.html"));
-  });
-}
+//   app.get("*", (req, res) => {
+//     res.sendFile(path.join(dirname, "../frontend", "dist", "index.html"));
+//   });
+// }
 
 const PORT = Number(process.env.PORT) || 8080
 
